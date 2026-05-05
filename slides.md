@@ -35,6 +35,13 @@ TBD
 
 ---
 
+<p align="center">
+<img src="images/containers-qa-refresh.png" />
+</p>
+
+
+---
+
 ## Title
 <!-- .slide: style="text-align: left;"> -->
 TBD
