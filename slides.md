@@ -1,5 +1,5 @@
 # Pods and Pages
-## Stateful applications in Kubernetes
+## Databases in Kubernetes
 
 ---
 
@@ -29,8 +29,8 @@ TBD
 ## Agenda
 <!-- .slide: style="text-align: left;"> -->
 - Why we should run databases in Kubernetes
-- The main challenges of running stateful applications in Kubernetes
-- The different deployment options available for databases in Kubernetes
+- The main challenges of running stateful applications
+- The different deployment options available
 - How to persist and protect data on Kubernetes
 
 ---
@@ -49,5 +49,5 @@ TBD
 </font>
 
 <p align="center">
-<img src="images/XXXXXXXXXXXXXXXXXXXXXXXXx.png" />
+<img src="images/pods-and-pages-qr.png" />
 </p>
