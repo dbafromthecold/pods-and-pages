@@ -39,6 +39,9 @@ TBD
 <img src="images/containers-qa-refresh.png" />
 </p>
 
+<font size="6">
+<a href="https://www.sqlservercentral.com/articles/ding-the-world%E2%80%99s-largest-mobile-top-up-network-streamlines-qa-with-sql-server-containers ">Streamlining QA with SQL Server Containers</a><br>
+</font>
 
 ---
 
