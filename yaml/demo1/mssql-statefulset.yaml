@@ -1,0 +1,108 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mssql-statefulset
+  labels:
+    app: mssql
+
+spec:
+  serviceName: mssql-headless
+  replicas: 1
+  podManagementPolicy: Parallel
+
+  selector:
+    matchLabels:
+      name: mssql-pod
+
+  template:
+    metadata:
+      labels:
+        name: mssql-pod
+      annotations:
+        stork.libopenstorage.org/disableHyperconvergence: "true" # remove warning
+
+    spec:
+      tolerations:
+        - key: node.kubernetes.io/unreachable
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 10
+        - key: node.kubernetes.io/not-ready
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 10
+
+      securityContext:
+        fsGroup: 10001
+
+      containers:
+        - name: mssql-container
+          image: mcr.microsoft.com/mssql/server:2025-CU3-ubuntu-24.04
+
+          ports:
+            - containerPort: 1433
+              name: mssql-port
+
+          env:
+            - name: MSSQL_PID
+              value: "Developer"
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: MSSQL_AGENT_ENABLED
+              value: "1"
+            - name: MSSQL_DATA_DIR
+              value: /opt/mssql/data
+            - name: MSSQL_LOG_DIR
+              value: /opt/mssql/log
+            - name: MSSQL_SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mssql-sa-password
+                  key: MSSQL_SA_PASSWORD
+
+          resources:
+            requests:
+              memory: 2048Mi # limits/requests match for guaranteed QoS
+              cpu: 2000m
+            limits:
+              memory: 2048Mi
+              cpu: 2000m
+
+          volumeMounts:
+            - name: sqlsystem
+              mountPath: /var/opt/mssql
+            - name: sqldata
+              mountPath: /opt/mssql/data
+            - name: sqllog
+              mountPath: /opt/mssql/log
+
+  volumeClaimTemplates:
+    - metadata:
+        name: sqlsystem
+      spec:
+        accessModes:
+          - ReadWriteOncePod
+        storageClassName: px-fa-direct-access
+        resources:
+          requests:
+            storage: 20Gi
+
+    - metadata:
+        name: sqldata
+      spec:
+        accessModes:
+          - ReadWriteOncePod
+        storageClassName: px-fa-direct-access
+        resources:
+          requests:
+            storage: 100Gi
+
+    - metadata:
+        name: sqllog
+      spec:
+        accessModes:
+          - ReadWriteOncePod
+        storageClassName: px-fa-direct-access
+        resources:
+          requests:
+            storage: 50Gi
