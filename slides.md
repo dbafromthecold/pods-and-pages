@@ -87,7 +87,16 @@ No! We care about the DATA
 
 ## Deploying to Kubernetes
 <!-- .slide: style="text-align: left;"> -->
-TBD
+
+Use StatefulSets rather than Deployments for databases
+<br>
+<br>
+<ul>
+<li class="fragment">Built for stateful applications</li>
+<li class="fragment">Stable pod identity and storage</li>
+<li class="fragment">Ordered creation and termination</li>
+<li class="fragment">Persistent storage is uniquely assigned per replica</li>
+</ul>
 
 ---
 
@@ -96,39 +105,53 @@ TBD
 
 <div style="display: flex; align-items: center;">
 <div style="width: 70%; padding-right: 40px; font-size: 0.9em;">
-
 <ul>
 <li class="fragment">StatefulSets reference PersistentVolumeClaims</li>
 <li class="fragment">PersistentVolumeClaims bind to PersistentVolumes</li>
 <li class="fragment">StorageClasses describe types of storage</li>
 <li class="fragment">Storage persists independently from the pod lifecycle</li>
 </ul>
-
 </div>
-
 <div style="width: 30%; text-align: center;">
 <img src="images/kubernetes_storage.png" style="border: 0; background: none; box-shadow: none; max-height: 500px;" />
-
 </div>
 </div>
-
----
-
-## StatefulSets
-<!-- .slide: style="text-align: left;"> -->
-TBD
 
 ---
 
 ## Secrets
 <!-- .slide: style="text-align: left;"> -->
-TBD
+
+<div style="display: flex; align-items: center;">
+<div style="width: 30%; text-align: center;">
+<img src="images/secret-128.png"
+     style="border: 0; background: none; box-shadow: none; max-height: 500px;" />
+</div>
+<div style="width: 70%; padding-left: 40px; font-size: 0.9em;">
+<ul>
+<li class="fragment">Don't put sensitive information in StatefulSet manifests!</li>
+<li class="fragment">Use Secrets to store usernames and passwords</li>
+<li class="fragment">Secrets are encoded, not encrypted</li>
+</ul>
+</div>
+</div>
 
 ---
 
 ## Services
 <!-- .slide: style="text-align: left;"> -->
-TBD
+<div style="display: flex; align-items: center;">
+<div style="width: 70%; padding-right: 40px; font-size: 0.9em;">
+<ul>
+<li class="fragment">Where are we connecting from?</li>
+<li class="fragment">Services provide a stable endpoint</li>
+<li class="fragment">Is outside access required?</li>
+</ul>
+</div>
+<div style="width: 30%; text-align: center;">
+<img src="images/svc-128.png" style="border: 0; background: none; box-shadow: none; max-height: 500px;" />
+</div>
+</div>
 
 ---
 
