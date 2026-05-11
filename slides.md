@@ -94,8 +94,8 @@ TBD
 ## Kubernetes Storage
 <!-- .slide: style="text-align: left;"> -->
 
-<div style="display: flex; align-items: center;">
-<div style="width: 70%; padding-right: 40px;">
+<div style="display: flex; align-items: left;">
+<div style="width: 70%; padding-right: 40px; font-size: 0.9em;">>
 
 <ul>
 <li class="fragment">StatefulSets reference PersistentVolumeClaims</li>
