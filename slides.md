@@ -1,4 +1,4 @@
-  # Pods and Pages
+# Pods and Pages
 ## Databases in Kubernetes
 
 ---
