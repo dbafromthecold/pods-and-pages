@@ -95,7 +95,7 @@ TBD
 <!-- .slide: style="text-align: left;"> -->
 
 <div style="display: flex; align-items: left;">
-<div style="width: 70%; padding-right: 40px; font-size: 0.9em;">>
+<div style="width: 70%; padding-right: 40px; font-size: 0.9em;">
 
 <ul>
 <li class="fragment">StatefulSets reference PersistentVolumeClaims</li>
