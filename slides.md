@@ -144,7 +144,7 @@ Use StatefulSets rather than Deployments for databases
 <div style="width: 70%; padding-right: 40px; font-size: 0.9em;">
 <ul>
 <li class="fragment">Where are we connecting from?</li>
-<li class="fragment">Services provide a stable endpoint</li>
+<li class="fragment">Services provide stable network endpoints</li>
 <li class="fragment">Is outside access required?</li>
 </ul>
 </div>
