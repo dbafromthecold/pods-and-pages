@@ -107,7 +107,7 @@ TBD
 </div>
 
 <div style="width: 30%; text-align: center;">
-<img src="images/kubernetes-storage.png" style="border: 0; background: none; box-shadow: none; max-height: 500px;" />
+<img src="images/kubernetes_storage.png" style="border: 0; background: none; box-shadow: none; max-height: 500px;" />
 
 </div>
 </div>
