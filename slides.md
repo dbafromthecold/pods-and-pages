@@ -1,4 +1,4 @@
-# Pods and Pages
+  # Pods and Pages
 ## Databases in Kubernetes
 
 ---
@@ -28,10 +28,12 @@ TBD
 
 ## Agenda
 <!-- .slide: style="text-align: left;"> -->
-- Why we should run databases in Kubernetes
-- The main challenges of running stateful applications
-- The different deployment options available
-- How to persist and protect data on Kubernetes
+TBD
+
+---
+
+# Why databases in Kubernetes?
+<!-- .slide: style="text-align: left;"> -->
 
 ---
 
@@ -45,10 +47,66 @@ TBD
 
 ---
 
-## Title
+## Streamlining QA
 <!-- .slide: style="text-align: left;"> -->
 TBD
 
+---
+
+## A change of mindset
+<!-- .slide: style="text-align: left;"> -->
+Containers change how we think about databases...
+<br>
+<br>
+<span class="fragment fade-in" data-fragment-index="1">
+Do we care about the compute?....really?
+</span>
+<br>
+<br>
+<span class="fragment fade-in" data-fragment-index="2">
+No! We care about the DATA
+</span>
+
+---
+
+## Containers are not magic
+<!-- .slide: style="text-align: left;"> -->
+<ul>
+<li class="fragment">The database still needs CPU, memory, storage, and network</li>
+<li class="fragment">The transaction log still matters</li>
+<li class="fragment">The backup strategy still matters</li>
+<li class="fragment">The failure modes are different, not gone</li>
+</ul>
+
+---
+
+## The three main responsibilities
+<!-- .slide: style="text-align: left;"> -->
+- Availability
+- Recoverability
+- Performance
+
+---
+
+# Availability
+<!-- .slide: style="text-align: left;"> -->
+
+---
+
+---
+
+<img src="images/kubeinvaders.gif" style="float: center"/>
+
+---
+
+## Key takeaways
+<!-- .slide: style="text-align: left;"> -->
+- Kubernetes gives us powerful primitives
+- Databases still need database thinking
+- Persistence is not backup
+- Placement is an availability and performance decision
+- Operators encode operational knowledge
+- Failure testing proves the design
 
 ---
 
