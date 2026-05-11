@@ -95,82 +95,22 @@ TBD
 <!-- .slide: style="text-align: left;"> -->
 
 <div style="display: flex; align-items: center;">
-<div style="width: 35%;">
-
-<img src="images/kubernetes-storage.png" style="border: 0; background: none; box-shadow: none;" />
-
-</div>
-<div style="width: 65%; padding-left: 40px;">
+<div style="width: 70%; padding-right: 40px;">
 
 <ul>
 <li class="fragment">StatefulSets reference PersistentVolumeClaims</li>
-<li class="fragment">PersistentVolumeClaims map to PersistentVolumes</li>
-<li class="fragment">PersistentVolumes are provisioned from a StorageClass</li>
+<li class="fragment">PersistentVolumeClaims bind to PersistentVolumes</li>
+<li class="fragment">StorageClasses describe types of storage</li>
 <li class="fragment">Storage persists independently from the pod lifecycle</li>
 </ul>
 
 </div>
+
+<div style="width: 30%; text-align: center;">
+<img src="images/kubernetes-storage.png" style="border: 0; background: none; box-shadow: none; max-height: 500px;" />
+
 </div>
-
----
-
-## StorageClasses
-<!-- .slide: style="text-align: left;"> -->
-StorageClasses describe types of storage
-<br>
-<br>
-<ul>
-<li class="fragment">Fast local disk</li>
-<li class="fragment">Network block storage</li>
-<li class="fragment">Premium or standard tiers</li>
-<li class="fragment">Encryption and replication options</li>
-<li class="fragment">Volume expansion support</li>
-</ul>
-
----
-
-## PersistentVolumes
-<!-- .slide: style="text-align: left;"> -->
-A PersistentVolume is storage made available to the cluster
-<br>
-<br>
-<ul>
-<li class="fragment">Provisioned manually or dynamically</li>
-<li class="fragment">Backed by a storage provider</li>
-<li class="fragment">Mounted into a pod</li>
-<li class="fragment">Independent from pod lifecycle</li>
-</ul>
-
----
-
-## PersistentVolumeClaims
-<!-- .slide: style="text-align: left;"> -->
-A PersistentVolumeClaim is a request for storage
-<br>
-<br>
-<pre><code>resources:
-  requests:
-    storage: 500Gi</code></pre>
-<br>
-<span class="fragment fade-in" data-fragment-index="1">
-For StatefulSets, each replica usually gets its own claim
-</span>
-
----
-
-## Reclaim policies
-<!-- .slide: style="text-align: left;"> -->
-What happens to the volume when the claim is deleted?
-<br>
-<br>
-<ul>
-<li class="fragment">Delete: remove the underlying storage</li>
-<li class="fragment">Retain: keep the underlying storage</li>
-</ul>
-<br>
-<span class="fragment fade-in" data-fragment-index="3">
-That setting can be the difference between recovery and a very quiet room
-</span>
+</div>
 
 ---
 
@@ -207,6 +147,22 @@ TBD
 
 # Recoverability
 <!-- .slide: style="text-align: left;"> -->
+
+---
+
+## Reclaim policies
+<!-- .slide: style="text-align: left;"> -->
+What happens to the volume when the claim is deleted?
+<br>
+<br>
+<ul>
+<li class="fragment">Delete: remove the underlying storage</li>
+<li class="fragment">Retain: keep the underlying storage</li>
+</ul>
+<br>
+<span class="fragment fade-in" data-fragment-index="3">
+That setting can be the difference between recovery and a very quiet room
+</span>
 
 ---
 
