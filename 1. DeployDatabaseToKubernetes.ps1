@@ -1,17 +1,16 @@
 ####################################################################################################################
 ####################################################################################################################
 ##
-## Pods and Pages - Deploying stateful applications to Kubernetes
+## https://github.com/dbafromthecold/pods-and-pages
+##
+## Deploying databases to Kubernetes
 ## 
-##
-##
-## Faster, Safer Database Operations
 ## Author - Andrew Pruski
-## apruski@purestorage.com
+## @dbafromthecold.com
+## dbafromthecold@gmail.com
 ##
 ####################################################################################################################
 ####################################################################################################################
-
 
 
 
