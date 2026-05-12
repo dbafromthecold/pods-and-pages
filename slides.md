@@ -20,14 +20,14 @@
 
 ---
 
-## Session Aim
+### Session Aim
 <!-- .slide: style="text-align: left;"> -->
 
 To explore how databases can be deployed and operated in Kubernetes.<br>
 <br>
 We'll look at the core DBA responsibilities of availability, recoverability, and performance.
 
-## Agenda
+### Agenda
 <!-- .slide: style="text-align: left;"> -->
 
 - Why run databases in Kubernetes?
@@ -38,28 +38,6 @@ We'll look at the core DBA responsibilities of availability, recoverability, and
 
 # Why databases in Kubernetes?
 <!-- .slide: style="text-align: left;"> -->
-
----
-
-<p align="center">
-<img src="images/containers-qa-refresh.png" />
-</p>
-
-<font size="6">
-<a href="https://www.sqlservercentral.com/articles/ding-the-world%E2%80%99s-largest-mobile-top-up-network-streamlines-qa-with-sql-server-containers ">Streamlining QA with SQL Server Containers</a><br>
-</font>
-
----
-
-## Streamlining QA
-<!-- .slide: style="text-align: left;"> -->
-- Current QA process refreshed VMs monthly
-- Each refresh required installing SQL Server
-- Process took over 45 minutes for each VM
-<br>
-<span class="fragment fade-in" data-fragment-index="2">
-New procees utilising containers took no more than 2 minutes
-</span>
 
 ---
 
@@ -74,7 +52,32 @@ Do we care about the compute?....really?
 <br>
 <br>
 <span class="fragment fade-in" data-fragment-index="2">
-No! We care about the <b><i>DATA</i></b>
+No! We care about the <b><em>DATA</em></b>
+</span>
+
+---
+
+<p align="center">
+<img src="images/containers-qa-refresh.png" />
+</p>
+
+<div style="text-align: left; font-size: 1.2em;">
+<a href="https://www.sqlservercentral.com/articles/ding-the-world%E2%80%99s-largest-mobile-top-up-network-streamlines-qa-with-sql-server-containers">
+Streamlining QA with SQL Server Containers
+</a>
+</div>
+
+---
+
+## Streamlining QA
+<!-- .slide: style="text-align: left;"> -->
+- Current QA process refreshed VMs monthly
+- Each refresh required installing SQL Server
+- Process took over 45 minutes for each VM
+<br>
+<br>
+<span class="fragment fade-in" data-fragment-index="2">
+New procees utilising containers took no more than 2 minutes
 </span>
 
 ---
@@ -117,7 +120,7 @@ Use StatefulSets rather than Deployments for databases
 
 ---
 
-## Secrets
+### Secrets
 <!-- .slide: style="text-align: left;"> -->
 
 <div style="display: flex; align-items: center;">
@@ -134,7 +137,7 @@ Use StatefulSets rather than Deployments for databases
 </div>
 </div>
 
-## Services
+### Services
 <!-- .slide: style="text-align: left;"> -->
 <div style="display: flex; align-items: center;">
 <div style="width: 70%; padding-right: 40px; font-size: 0.9em;">
@@ -178,7 +181,17 @@ TBD
 
 ## Tolerations
 <!-- .slide: style="text-align: left;"> -->
-TBD
+
+<pre><code data-line-numbers="*|2-5|6-9">tolerations:
+- key: "node.kubernetes.io/unreachable"
+  operator: "Exists"
+  effect: "NoExecute"
+  tolerationSeconds: 10
+- key: "node.kubernetes.io/not-ready"
+  operator: "Exists"
+  effect: "NoExecute"
+  tolerationSeconds: 10
+</pre></code>
 
 ---
 
@@ -189,8 +202,6 @@ TBD
 
 ## Reclaim policies
 <!-- .slide: style="text-align: left;"> -->
-## Reclaim policies
-<!-- .slide: style="text-align: left;"> -->
 
 What happens to the volume when the claim is deleted?
 <br>
@@ -198,6 +209,7 @@ What happens to the volume when the claim is deleted?
 <li class="fragment" data-fragment-index="1">Delete: remove the underlying storage</li>
 <li class="fragment" data-fragment-index="2">Retain: keep the underlying storage</li>
 </ul>
+<br>
 <br>
 <span class="fragment fade-in" data-fragment-index="3">
 That setting can be the difference between recovery and a very quiet room
