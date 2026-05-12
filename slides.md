@@ -23,7 +23,7 @@
 ## Session Aim
 <!-- .slide: style="text-align: left;"> -->
 
-To explore how databases can be deployed and operated in Kubernetes.
+To explore how databases can be deployed and operated in Kubernetes.<br>
 <br>
 We'll look at the core DBA responsibilities of availability, recoverability, and performance.
 
@@ -70,7 +70,7 @@ Do we care about the compute?....really?
 <br>
 <br>
 <span class="fragment fade-in" data-fragment-index="2">
-No! We care about the DATA
+No! We care about the <b><i>DATA</i></b>
 </span>
 
 ---
@@ -95,7 +95,6 @@ No! We care about the DATA
 <!-- .slide: style="text-align: left;"> -->
 
 Use StatefulSets rather than Deployments for databases
-<br>
 <br>
 <ul>
 <li class="fragment">Built for stateful applications</li>
@@ -197,12 +196,14 @@ TBD
 
 ## Reclaim policies
 <!-- .slide: style="text-align: left;"> -->
+## Reclaim policies
+<!-- .slide: style="text-align: left;"> -->
+
 What happens to the volume when the claim is deleted?
 <br>
-<br>
 <ul>
-<li class="fragment">Delete: remove the underlying storage</li>
-<li class="fragment">Retain: keep the underlying storage</li>
+<li class="fragment" data-fragment-index="1">Delete: remove the underlying storage</li>
+<li class="fragment" data-fragment-index="2">Retain: keep the underlying storage</li>
 </ul>
 <br>
 <span class="fragment fade-in" data-fragment-index="3">
