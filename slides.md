@@ -53,7 +53,13 @@ We'll look at the core DBA responsibilities of availability, recoverability, and
 
 ## Streamlining QA
 <!-- .slide: style="text-align: left;"> -->
-TBD
+- Current QA process refreshed VMs monthly
+- Each refresh required installing SQL Server
+- Process took over 45 minutes for each VM
+<br>
+<span class="fragment fade-in" data-fragment-index="2">
+New procees utilising containers took no more than 2 minutes
+</span>
 
 ---
 
@@ -70,17 +76,6 @@ Do we care about the compute?....really?
 <span class="fragment fade-in" data-fragment-index="2">
 No! We care about the <b><i>DATA</i></b>
 </span>
-
----
-
-## Containers are not magic
-<!-- .slide: style="text-align: left;"> -->
-<ul>
-<li class="fragment">The database still needs CPU, memory, storage, and network</li>
-<li class="fragment">The transaction log still matters</li>
-<li class="fragment">The backup strategy still matters</li>
-<li class="fragment">The failure modes are different, not gone</li>
-</ul>
 
 ---
 
