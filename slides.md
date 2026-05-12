@@ -22,13 +22,19 @@
 
 ## Session Aim
 <!-- .slide: style="text-align: left;"> -->
-TBD
+
+To explore how databases can be deployed and operated in Kubernetes.
+<br>
+We'll look at the core DBA responsibilities of availability, recoverability, and performance.
 
 ---
 
 ## Agenda
 <!-- .slide: style="text-align: left;"> -->
-TBD
+
+- Why run databases in Kubernetes?
+- Getting up and running
+- Day 2 operations
 
 ---
 
@@ -136,8 +142,6 @@ Use StatefulSets rather than Deployments for databases
 </div>
 </div>
 
----
-
 ## Services
 <!-- .slide: style="text-align: left;"> -->
 <div style="display: flex; align-items: center;">
@@ -165,6 +169,24 @@ Use StatefulSets rather than Deployments for databases
 
 # Availability
 <!-- .slide: style="text-align: left;"> -->
+
+---
+
+## One replica?
+<!-- .slide: style="text-align: left;"> -->
+TBD
+
+---
+
+## Probes
+<!-- .slide: style="text-align: left;"> -->
+TBD
+
+---
+
+## Tolerations
+<!-- .slide: style="text-align: left;"> -->
+TBD
 
 ---
 
