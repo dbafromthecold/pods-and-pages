@@ -27,8 +27,6 @@ To explore how databases can be deployed and operated in Kubernetes.<br>
 <br>
 We'll look at the core DBA responsibilities of availability, recoverability, and performance.
 
----
-
 ## Agenda
 <!-- .slide: style="text-align: left;"> -->
 
