@@ -18,8 +18,6 @@ spec:
     metadata:
       labels:
         name: mssql-pod
-      annotations:
-        stork.libopenstorage.org/disableHyperconvergence: "true" # remove warning
 
     spec:
       tolerations:

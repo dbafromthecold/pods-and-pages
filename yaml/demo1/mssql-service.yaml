@@ -1,6 +1,21 @@
 apiVersion: v1
 kind: Service
 metadata:
+  name: mssql-headless
+  labels:
+    app: mssql
+spec:
+  clusterIP: None
+  selector:
+    name: mssql-pod
+  ports:
+  - name: sql
+    port: 1433
+    targetPort: 1433
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: mssql-service
 spec:
   ports:
