@@ -61,9 +61,9 @@ No! We care about the <b><em>DATA</em></b>
 <img src="images/containers-qa-refresh.png" />
 </p>
 
-<div style="text-align: left; font-size: 1.2em;">
+<div style="text-align: left; font-size: 0.8em;">
 <a href="https://www.sqlservercentral.com/articles/ding-the-world%E2%80%99s-largest-mobile-top-up-network-streamlines-qa-with-sql-server-containers">
-Streamlining QA with SQL Server Containers
+https://www.sqlservercentral.com/articles/ding-the-world%E2%80%99s-largest-mobile-top-up-network-streamlines-qa-with-sql-server-containers
 </a>
 </div>
 
@@ -77,7 +77,7 @@ Streamlining QA with SQL Server Containers
 <br>
 <br>
 <span class="fragment fade-in" data-fragment-index="2">
-New procees utilising containers took no more than 2 minutes
+New process utilising containers took no more than 2 minutes
 </span>
 
 ---
@@ -200,7 +200,17 @@ TBD
 
 ---
 
-## Reclaim policies
+## Backups
+<!-- .slide: style="text-align: left;"> -->
+TBD
+
+---
+
+## Snapshots
+
+---
+
+## Volume Reclaim policies
 <!-- .slide: style="text-align: left;"> -->
 
 What happens to the volume when the claim is deleted?
@@ -222,6 +232,38 @@ That setting can be the difference between recovery and a very quiet room
 
 ---
 
+## Storage
+<!-- .slide: style="text-align: left;"> -->
+TBD
+
+---
+
+## Requests and Limits
+<!-- .slide: style="text-align: left;"> -->
+
+TBD
+
+Kubernetes assigns Quality of Service based on requests and limits
+<br>
+<br>
+<ul>
+<li class="fragment">Guaranteed</li>
+<li class="fragment">Burstable</li>
+<li class="fragment">BestEffort</li>
+</ul>
+<br>
+<span class="fragment fade-in" data-fragment-index="4">
+Databases generally should not be BestEffort
+</span>
+
+---
+
+## Tools for testing performance
+<!-- .slide: style="text-align: left;"> -->
+TBD
+
+---
+
 # Chaos Engineering
 <!-- .slide: style="text-align: left;"> -->
 
@@ -231,6 +273,30 @@ That setting can be the difference between recovery and a very quiet room
 <!-- .slide: style="text-align: left;"> -->
 "Chaos Engineering is the discipline of experimenting on a system in order to build confidence in the system's capability to withstand turbulent conditions in production"<br>
 <font size="6"><a href="principlesofchaos.org">principlesofchaos.org</a></font>
+
+---
+
+## What are we testing?
+<!-- .slide: style="text-align: left;"> -->
+- Does the workload stay available?
+- Does failover happen correctly?
+- Does recovery meet RPO and RTO?
+- Do clients reconnect?
+- Do alerts fire?
+- Do humans know what happened?
+
+---
+
+## Failure experiments
+<!-- .slide: style="text-align: left;"> -->
+<ul>
+<li class="fragment">Delete a pod</li>
+<li class="fragment">Drain a node</li>
+<li class="fragment">Disconnect storage</li>
+<li class="fragment">Force AG or operator failover</li>
+<li class="fragment">Restore to another namespace or cluster</li>
+</ul>
+
 
 ---
 
