@@ -169,18 +169,53 @@ Use StatefulSets rather than Deployments for databases
 
 ## One replica?
 <!-- .slide: style="text-align: left;"> -->
-TBD
+
+Deploying a single replica means relying on Kubernetes for recovery rather than database high availability
+<br>
+<br>
+Operators can provide database-level high availability capabilities such as:
+<ul>
+<li class="fragment">Replication</li>
+<li class="fragment">Automatic failover</li>
+<li class="fragment">Backup and recovery automation</li>
+</ul>
+
+<br>
+
+<span class="fragment fade-in">
+However, operators also introduce additional operational complexity
+</span>
+
+<br>
+<br>
+
+- CloudNativePG
+- Oracle MySQL Operator
+- SQL Server on Kubernetes Operator
 
 ---
 
 ## Probes
 <!-- .slide: style="text-align: left;"> -->
-TBD
+
+Startup probe
+- Is SQL Server still starting?
+
+Readiness probe
+- Can we accept connections?
+
+Liveness probe
+- Should Kubernetes restart the container?
+
+- A bad liveness probe can become a self-inflicted outage!
 
 ---
 
 ## Tolerations
 <!-- .slide: style="text-align: left;"> -->
+
+How long should a database pod remain on an unhealthy node
+before Kubernetes evicts it?
 
 <pre><code data-line-numbers="*|2-5|6-9">tolerations:
 - key: "node.kubernetes.io/unreachable"
@@ -202,11 +237,35 @@ TBD
 
 ## Backups
 <!-- .slide: style="text-align: left;"> -->
-TBD
+
+Remember...Kubernetes is just another platform
+
+Still take your backups!
+Get those backups out of the cluster asap
+Regular restore testing is critical
 
 ---
 
-## Snapshots
+## Volume Snapshots
+<!-- .slide: style="text-align: left;"> -->
+
+What type of snapshot are we talking about?
+<br>
+
+- Crash-consistent snapshots
+- Application-consistent snapshots
+
+<br>
+
+<span class="fragment fade-in">
+Only application-consistent snapshots should be considered a replacement for native database backups
+</span>
+
+<br>
+
+<span class="fragment fade-in">
+How portable are those snapshots between storage platforms or clusters?
+</span>
 
 ---
 
@@ -234,14 +293,21 @@ That setting can be the difference between recovery and a very quiet room
 
 ## Storage
 <!-- .slide: style="text-align: left;"> -->
-TBD
+
+Go for the fastest storage available to the cluster
+Follow best practices for database file layout
+Use snapshots to complement database backups
+Test storage performance with realistic database workloads
 
 ---
 
 ## Requests and Limits
 <!-- .slide: style="text-align: left;"> -->
 
-TBD
+The noisy neighbour problem!
+Set CPU and Memory limits
+Be aware of database quirks!
+<br>
 
 Kubernetes assigns Quality of Service based on requests and limits
 <br>
@@ -253,14 +319,18 @@ Kubernetes assigns Quality of Service based on requests and limits
 </ul>
 <br>
 <span class="fragment fade-in" data-fragment-index="4">
-Databases generally should not be BestEffort
+Databases generally should <em>not</em> be BestEffort
 </span>
 
 ---
 
 ## Tools for testing performance
 <!-- .slide: style="text-align: left;"> -->
-TBD
+
+Don't only use synthetic tools for testing
+Ideally replay production workloads
+Or use tools that drive known benchmarks
+Utilise database engine tooling to analyse workloads
 
 ---
 
@@ -276,27 +346,16 @@ TBD
 
 ---
 
-## What are we testing?
+## Recent Failure experiments
 <!-- .slide: style="text-align: left;"> -->
-- Does the workload stay available?
-- Does failover happen correctly?
-- Does recovery meet RPO and RTO?
-- Do clients reconnect?
-- Do alerts fire?
-- Do humans know what happened?
 
----
-
-## Failure experiments
-<!-- .slide: style="text-align: left;"> -->
+- Recent testing of an AG operator for SQL Server
 <ul>
-<li class="fragment">Delete a pod</li>
-<li class="fragment">Drain a node</li>
-<li class="fragment">Disconnect storage</li>
-<li class="fragment">Force AG or operator failover</li>
-<li class="fragment">Restore to another namespace or cluster</li>
+<li class="fragment">Pod failure</li>
+<li class="fragment">Node failure</li>
+<li class="fragment">Service interruption</li>
+<li class="fragment">Storage Failure</li>
 </ul>
-
 
 ---
 
