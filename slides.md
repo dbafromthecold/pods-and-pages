@@ -305,7 +305,7 @@ That setting can be the difference between recovery and </b><em>a very quiet roo
 <!-- .slide: style="text-align: left;"> -->
 
 <p align="center">
-<img src="images/speed.gif"/>
+<img src="images/lightning-mcqueen.gif"/>
 </p> 
 
 ---
