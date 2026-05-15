@@ -464,7 +464,7 @@ Quality of Service based on requests and limits:-
 <li class="fragment">Pod failure</li>
 <li class="fragment">Node failure</li>
 <li class="fragment">Service interruption</li>
-<li class="fragment">Storage Failure</li>
+<li class="fragment">Simulated storage loss</li>
 </ul>
 
 ---
