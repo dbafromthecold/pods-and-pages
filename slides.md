@@ -191,7 +191,7 @@ Operators can provide database-level high availability capabilities such as:
 <!-- .slide: style="text-align: left;" -->
 
 <img 
-  src="images/probes.png"
+  src="images/probe.png"
   style="
     position:absolute;
     top:20px;
