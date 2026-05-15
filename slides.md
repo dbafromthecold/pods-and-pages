@@ -23,8 +23,7 @@
 ### Session Aim
 <!-- .slide: style="text-align: left;"> -->
 
-To explore how databases can be deployed and operated in Kubernetes.<br>
-We'll look at the core DBA responsibilities of availability, recoverability, and performance.
+To explore how databases can be deployed and operated in Kubernetes. We'll look at the core DBA responsibilities of availability, recoverability, and performance.
 
 ### Agenda
 <!-- .slide: style="text-align: left;"> -->
@@ -35,7 +34,7 @@ We'll look at the core DBA responsibilities of availability, recoverability, and
 
 ---
 
-# Why databases in Kubernetes?
+### Why databases in Kubernetes?
 <!-- .slide: style="text-align: left;"> -->
 
 <div style="text-align:center;">
@@ -338,7 +337,7 @@ Kubernetes assigns Quality of Service based on requests and limits
 
 ---
 
-# Chaos Engineering
+### Chaos Engineering
 <!-- .slide: style="text-align: left;"> -->
 
 <p align="center">
