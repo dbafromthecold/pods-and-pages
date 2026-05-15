@@ -38,6 +38,10 @@ We'll look at the core DBA responsibilities of availability, recoverability, and
 # Why databases in Kubernetes?
 <!-- .slide: style="text-align: left;"> -->
 
+<div style="text-align:center;">
+    <img src="https://media.tenor.com/7zKzuI4IEfAAAAAC/but-why.gif" width="70%">
+</div>
+
 ---
 
 ## A change of mindset
@@ -316,6 +320,10 @@ Utilise database engine tooling to analyse workloads<br>
 
 # Chaos Engineering
 <!-- .slide: style="text-align: left;"> -->
+
+<p align="center">
+<img src="images/chaos.gif"/>
+</p>
 
 ---
 
