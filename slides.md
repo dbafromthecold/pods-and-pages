@@ -184,22 +184,26 @@ Operators can provide database-level high availability capabilities such as:
 However, operators also introduce additional operational complexity
 </span>
 
-- CloudNativePG
-- Oracle MySQL Operator
-- SQL Server on Kubernetes Operator
-
 ---
 
 ## Probes
 <!-- .slide: style="text-align: left;"> -->
 
-Startup probe
-- Is SQL Server still starting?
-Readiness probe
-- Can we accept connections?
-Liveness probe
-- Should Kubernetes restart the container?
-- A bad liveness probe can become a self-inflicted outage!
+<ul>
+<li class="fragment">Startup probe</li>
+    <ul>
+        <li class="fragment">Is SQL Server still starting?</li>
+    </ul>
+<li class="fragment">Readiness probe</li>
+    <ul>
+        <li class="fragment">Can we accept connections?</li>
+    </ul>
+<li class="fragment">Liveness probe</li>
+    <ul>
+        <li class="fragment">Should Kubernetes restart the container?</li>
+        <li class="fragment">A bad liveness probe can become a self-inflicted outage!</li>
+    </ul>
+</ul>
 
 ---
 
@@ -208,7 +212,8 @@ Liveness probe
 
 How long should a database pod remain on an unhealthy node
 before Kubernetes evicts it?
-
+<br>
+<br>
 <pre><code data-line-numbers="*|2-5|6-9">tolerations:
 - key: "node.kubernetes.io/unreachable"
   operator: "Exists"
@@ -232,9 +237,9 @@ before Kubernetes evicts it?
 
 Remember...Kubernetes is just another platform
 
-Still take your backups!<br>
-Get those backups out of the cluster asap<br>
-Regular restore testing is critical<br>
+- Still take your backups!<br>
+- Get those backups out of the cluster asap<br>
+- Regular restore testing is critical<br>
 
 ---
 
@@ -242,18 +247,24 @@ Regular restore testing is critical<br>
 <!-- .slide: style="text-align: left;"> -->
 
 What type of snapshot are we talking about?
+<br><br>
+
+<ul>
+  <li>Crash-consistent snapshots</li>
+  <li>Application-consistent snapshots</li>
+</ul>
+
 <br>
-- Crash-consistent snapshots
-- Application-consistent snapshots
+
+<div class="fragment fade-in">
+  Only application-consistent snapshots should be considered a replacement for native database backups
+</div>
+
 <br>
-<br>
-<span class="fragment fade-in">
-Only application-consistent snapshots should be considered a replacement for native database backups
-</span>
-<br>
-<span class="fragment fade-in">
-How portable are those snapshots between storage platforms or clusters?
-</span>
+
+<div class="fragment fade-in">
+  How portable are those snapshots between storage platforms or clusters?
+</div>
 
 ---
 
@@ -269,7 +280,7 @@ What happens to the volume when the claim is deleted?
 <br>
 <br>
 <span class="fragment fade-in" data-fragment-index="3">
-That setting can be the difference between recovery and a very quiet room
+That setting can be the difference between recovery and </b><em>a very quiet room</em></b>
 </span>
 
 ---
@@ -282,39 +293,48 @@ That setting can be the difference between recovery and a very quiet room
 ## Storage
 <!-- .slide: style="text-align: left;"> -->
 
-Go for the fastest storage available to the cluster<br>
-Follow best practices for database file layout<br>
-Use snapshots to complement database backups<br>
-Test storage performance with realistic database workloads
+- Go for the fastest storage available to the cluster<br>
+- Follow best practices for database file layout<br>
+- Use snapshots to complement database backups<br>
+- Test storage performance with realistic database workloads
 
 ---
 
 ## Requests and Limits
-<!-- .slide: style="text-align: left;"> -->
+<!-- .slide: style="text-align: left;" -->
 
-The noisy neighbour problem!<br>
-Set CPU and Memory limits<br>
-Be aware of database quirks!<br>
-Kubernetes assigns Quality of Service based on requests and limits<br>
-<ul>
-<li class="fragment" data-fragment-index="1">Guaranteed</li>
-<li class="fragment" data-fragment-index="2">Burstable</li>
-<li class="fragment" data-fragment-index="3">BestEffort</li>
-</ul>
+The noisy neighbour problem!
+<br><br>
+
+Set CPU and Memory limits
 <br>
-<span class="fragment fade-in" data-fragment-index="4">
-Databases generally should <em>not</em> be BestEffort
-</span>
+
+Be aware of database quirks!
+<br><br>
+
+Kubernetes assigns Quality of Service based on requests and limits
+
+<ul>
+  <li class="fragment" data-fragment-index="1">Guaranteed</li>
+  <li class="fragment" data-fragment-index="2">Burstable</li>
+  <li class="fragment" data-fragment-index="3">BestEffort</li>
+</ul>
+
+<br>
+
+<div class="fragment fade-in" data-fragment-index="4">
+  Databases generally should <em>not</em> be BestEffort
+</div>
 
 ---
 
 ## Tools for testing performance
 <!-- .slide: style="text-align: left;"> -->
 
-Don't only use synthetic tools for testing<br>
-Ideally replay production workloads<br>
-Or use tools that drive known benchmarks<br>
-Utilise database engine tooling to analyse workloads<br>
+- Don't only use synthetic tools for testing<br>
+- Ideally replay production workloads<br>
+- Or use tools that drive known benchmarks<br>
+- Utilise database engine tooling to analyse workloads<br>
 
 ---
 
