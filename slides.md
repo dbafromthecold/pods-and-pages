@@ -309,7 +309,7 @@ That setting can be the difference between recovery and </b><em>a very quiet roo
 <!-- .slide: style="text-align: left;" -->
 
 <img 
-  src="images/limits-128.png" 
+  src="images/limits-256.png" 
   style="position:absolute;
          top:20px;
          right:20px;
