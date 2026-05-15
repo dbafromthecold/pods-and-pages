@@ -165,9 +165,7 @@ Use StatefulSets rather than Deployments
 ### Availability
 <!-- .slide: style="text-align: left;"> -->
 
-<div style="text-align:center;">
-    <img src="https://tenor.com/view/whatever-you-need-me-to-do-im-available-whatever-i-can-do-robert-de-niro-irishman-gif-16206126">
-</div>
+<div class="tenor-gif-embed" data-postid="16206126" data-share-method="host" data-aspect-ratio="1.90476" data-width="100%"><a href="https://tenor.com/view/whatever-you-need-me-to-do-im-available-whatever-i-can-do-robert-de-niro-irishman-gif-16206126">Whatever You Need Me To Do Im Available GIF</a>from <a href="https://tenor.com/search/whatever+you+need+me+to+do-gifs">Whatever You Need Me To Do GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 ---
 
@@ -233,9 +231,7 @@ before Kubernetes evicts it?
 ### Recoverability
 <!-- .slide: style="text-align: left;"> -->
 
-<div style="text-align:center;">
-    <img src="https://tenor.com/view/fast-recovery-speedy-quick-gif-23662662">
-</div>
+<div class="tenor-gif-embed" data-postid="23662662" data-share-method="host" data-aspect-ratio="1.33891" data-width="100%"><a href="https://tenor.com/view/fast-recovery-speedy-quick-gif-23662662">Fast Recovery GIF</a>from <a href="https://tenor.com/search/fast-gifs">Fast GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 ---
 
@@ -254,21 +250,17 @@ Remember...Kubernetes is just another platform
 <!-- .slide: style="text-align: left;"> -->
 
 What type of snapshot are we talking about?
-<br><br>
-
+<br>
 <ul>
   <li>Crash-consistent snapshots</li>
   <li>Application-consistent snapshots</li>
 </ul>
-
 <br>
 
 <div class="fragment fade-in">
   Only application-consistent snapshots should be considered a replacement for native database backups
 </div>
-
 <br>
-
 <div class="fragment fade-in">
   How portable are those snapshots between storage platforms or clusters?
 </div>
@@ -295,9 +287,7 @@ That setting can be the difference between recovery and </b><em>a very quiet roo
 ### Performance
 <!-- .slide: style="text-align: left;"> -->
 
-<div style="text-align:center;">
-    <img src="https://tenor.com/view/speed-gif-5593954">
-</div>
+<div class="tenor-gif-embed" data-postid="5593954" data-share-method="host" data-aspect-ratio="1.78" data-width="100%"><a href="https://tenor.com/view/speed-gif-5593954">Speed GIF</a>from <a href="https://tenor.com/search/speed-gifs">Speed GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 ---
 
@@ -314,25 +304,17 @@ That setting can be the difference between recovery and </b><em>a very quiet roo
 ## Requests and Limits
 <!-- .slide: style="text-align: left;" -->
 
-The noisy neighbour problem!
-<br><br>
+The noisy neighbour problem!<br>
+Set CPU and Memory limits<br>
+Be aware of database quirks!<br><
 
-Set CPU and Memory limits
-<br>
-
-Be aware of database quirks!
-<br><br>
-
-Kubernetes assigns Quality of Service based on requests and limits
-
+Quality of Service based on requests and limits: -
 <ul>
   <li class="fragment" data-fragment-index="1">Guaranteed</li>
   <li class="fragment" data-fragment-index="2">Burstable</li>
   <li class="fragment" data-fragment-index="3">BestEffort</li>
 </ul>
-
 <br>
-
 <div class="fragment fade-in" data-fragment-index="4">
   Databases generally should <em>not</em> be BestEffort
 </div>
@@ -349,7 +331,7 @@ Kubernetes assigns Quality of Service based on requests and limits
 
 ---
 
-### Chaos Engineering
+## Chaos Engineering
 <!-- .slide: style="text-align: left;"> -->
 
 <p align="center">
@@ -375,6 +357,11 @@ Kubernetes assigns Quality of Service based on requests and limits
 <li class="fragment">Service interruption</li>
 <li class="fragment">Storage Failure</li>
 </ul>
+
+---
+
+# Demo
+## Testing SQL Server HA in Kubernetes
 
 ---
 
