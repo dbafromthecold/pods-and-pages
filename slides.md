@@ -34,10 +34,12 @@ To explore how databases can be deployed and operated in Kubernetes. We'll look 
 
 ---
 
-### Why databases in Kubernetes?
+## Why databases in Kubernetes?
 <!-- .slide: style="text-align: left;"> -->
 
-
+<p align="center">
+<img src="images/but-why.gif"/>
+</p>
 
 ---
 
@@ -61,11 +63,9 @@ No! We care about the <b><em>DATA</em></b>
 <img src="images/containers-qa-refresh.png" />
 </p>
 
-<div style="text-align: left; font-size: 0.8em;">
-<a href="https://www.sqlservercentral.com/articles/ding-the-world%E2%80%99s-largest-mobile-top-up-network-streamlines-qa-with-sql-server-containers">
-https://www.sqlservercentral.com/articles/ding-the-world%E2%80%99s-largest-mobile-top-up-network-streamlines-qa-with-sql-server-containers
-</a>
-</div>
+<font size="6">
+<a href="https://www.sqlservercentral.com/articles/streamlining-qa-with-sql-server-containers">https://www.sqlservercentral.com/articles/ding-the-world%E2%80%99s-largest-mobile-top-up-network-streamlines-qa-with-sql-server-containers</a><br>
+</font>
 
 ---
 
@@ -76,9 +76,11 @@ https://www.sqlservercentral.com/articles/ding-the-world%E2%80%99s-largest-mobil
 - Process took over 45 minutes for each VM
 <br>
 <br>
-<span class="fragment fade-in" data-fragment-index="2">
-- New process utilising containers took no more than 2 minutes
-</span>
+<ul>
+  <li class="fragment fade-in" data-fragment-index="1">
+    New process utilising containers took no more than 2 minutes
+  </li>
+</ul>
 
 ---
 
@@ -163,7 +165,9 @@ Use StatefulSets rather than Deployments
 ### Availability
 <!-- .slide: style="text-align: left;"> -->
 
-<div class="tenor-gif-embed" data-postid="16206126" data-share-method="host" data-aspect-ratio="1.90476" data-width="100%"><a href="https://tenor.com/view/whatever-you-need-me-to-do-im-available-whatever-i-can-do-robert-de-niro-irishman-gif-16206126">Whatever You Need Me To Do Im Available GIF</a>from <a href="https://tenor.com/search/whatever+you+need+me+to+do-gifs">Whatever You Need Me To Do GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+<p align="center">
+<img src="images/whatever-you-need-me-to-do-im-available.gif"/>
+</p> 
 
 ---
 
@@ -171,17 +175,13 @@ Use StatefulSets rather than Deployments
 <!-- .slide: style="text-align: left;"> -->
 
 Deploying a single replica means relying on Kubernetes for recovery rather than database high availability<br>
+<br>
 Operators can provide database-level high availability capabilities such as:
 <ul>
 <li class="fragment">Replication</li>
 <li class="fragment">Automatic failover</li>
 <li class="fragment">Backup and recovery automation</li>
 </ul>
-<br>
-<br>
-<span class="fragment fade-in">
-However, operators also introduce additional operational complexity
-</span>
 
 ---
 
@@ -226,12 +226,12 @@ before Kubernetes evicts it?
 
 ---
 
-### Recoverability
+## Recoverability
 <!-- .slide: style="text-align: left;"> -->
 
-<div class="tenor-gif-embed" data-postid="23662662" data-share-method="host" data-aspect-ratio="1.33891" data-width="100%"><a href="https://tenor.com/view/fast-recovery-speedy-quick-gif-23662662">Fast Recovery GIF</a>from <a href="https://tenor.com/search/fast-gifs">Fast GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-
-<img src="https://media.tenor.com/Y0eu0UP-B28AAAAC/fast-recovery-speedy.gif" width="100%">
+<p align="center">
+<img src="images/fast-recovery.gif"/>
+</p> 
 
 ---
 
@@ -256,7 +256,7 @@ What type of snapshot are we talking about?
   <li>Application-consistent snapshots</li>
 </ul>
 <br>
-
+<br>
 <div class="fragment fade-in">
   Only application-consistent snapshots should be considered a replacement for native database backups
 </div>
@@ -284,10 +284,12 @@ That setting can be the difference between recovery and </b><em>a very quiet roo
 
 ---
 
-### Performance
+## Performance
 <!-- .slide: style="text-align: left;"> -->
 
-<div class="tenor-gif-embed" data-postid="5593954" data-share-method="host" data-aspect-ratio="1.78" data-width="100%"><a href="https://tenor.com/view/speed-gif-5593954">Speed GIF</a>from <a href="https://tenor.com/search/speed-gifs">Speed GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+<p align="center">
+<img src="images/speed.gif"/>
+</p> 
 
 ---
 
@@ -304,9 +306,9 @@ That setting can be the difference between recovery and </b><em>a very quiet roo
 ## Requests and Limits
 <!-- .slide: style="text-align: left;" -->
 
-The noisy neighbour problem!<br>
-Set CPU and Memory limits<br>
-Be aware of database quirks!<br><
+- The noisy neighbour problem!<br>
+- Set CPU and Memory limits<br>
+- Be aware of database quirks!<br>
 
 Quality of Service based on requests and limits: -
 <ul>
@@ -315,9 +317,6 @@ Quality of Service based on requests and limits: -
   <li class="fragment" data-fragment-index="3">BestEffort</li>
 </ul>
 <br>
-<div class="fragment fade-in" data-fragment-index="4">
-  Databases generally should <em>not</em> be BestEffort
-</div>
 
 ---
 
@@ -361,6 +360,7 @@ Quality of Service based on requests and limits: -
 ---
 
 # Demo
+<!-- .slide: style="text-align: left;"> -->
 ## Testing SQL Server HA in Kubernetes
 
 ---
