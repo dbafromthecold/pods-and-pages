@@ -127,7 +127,7 @@ Use StatefulSets rather than Deployments
 
 <div style="display: flex; align-items: center;">
 <div style="width: 30%; text-align: center;">
-<img src="images/secret-128.png"
+<img src="images/secret-256.png"
      style="border: 0; background: none; box-shadow: none; max-height: 500px;" />
 </div>
 <div style="width: 70%; padding-left: 40px; font-size: 0.9em;">
@@ -150,7 +150,7 @@ Use StatefulSets rather than Deployments
 </ul>
 </div>
 <div style="width: 30%; text-align: center;">
-<img src="images/svc-128.png" style="border: 0; background: none; box-shadow: none; max-height: 500px;" />
+<img src="images/svc-256.png" style="border: 0; background: none; box-shadow: none; max-height: 500px;" />
 </div>
 </div>
 
@@ -188,17 +188,32 @@ Operators can provide database-level high availability capabilities such as:
 ---
 
 ## Probes
-<!-- .slide: style="text-align: left;"> -->
+<!-- .slide: style="text-align: left;" -->
+
+<img 
+  src="images/probes.png"
+  style="
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:180px;
+    border:none;
+    box-shadow:none;
+    background:none;
+  "
+/>
 
 <ul>
 <li class="fragment">Startup probe</li>
     <ul>
         <li class="fragment">Is SQL Server still starting?</li>
     </ul>
+
 <li class="fragment">Readiness probe</li>
     <ul>
         <li class="fragment">Can we accept connections?</li>
     </ul>
+
 <li class="fragment">Liveness probe</li>
     <ul>
         <li class="fragment">Should Kubernetes restart the container?</li>
