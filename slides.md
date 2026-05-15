@@ -37,9 +37,7 @@ To explore how databases can be deployed and operated in Kubernetes. We'll look 
 ### Why databases in Kubernetes?
 <!-- .slide: style="text-align: left;"> -->
 
-<div style="text-align:center;">
-    <img src="https://media.tenor.com/7zKzuI4IEfAAAAAC/but-why.gif">
-</div>
+<div class="tenor-gif-embed" data-postid="1290062710361139636" data-share-method="host" data-aspect-ratio="1.76596" data-width="100%"><a href="https://tenor.com/view/cruftbox-but-why-gif-1290062710361139636">Cruftbox But Why GIF</a>from <a href="https://tenor.com/search/cruftbox-gifs">Cruftbox GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
 
 ---
 
