@@ -173,10 +173,49 @@ Use StatefulSets rather than Deployments
 ---
 
 ## The three main responsibilities
-<!-- .slide: style="text-align: left;"> -->
-- Availability
-- Recoverability
-- Performance
+<!-- .slide: style="text-align: center;" -->
+
+<div style="display:flex; justify-content:space-between; gap:30px; margin-top:40px;">
+<div style="width:33%; text-align:center;">
+
+<h3>Availability</h3>
+<img 
+  src="images/availability.png"
+  style="
+    width:180px;
+    border:none;
+    box-shadow:none;
+    background:none;
+  "
+/>
+</div>
+
+<div style="width:33%; text-align:center;">
+<h3>Recoverability</h3>
+<img 
+  src="images/recoverability.png"
+  style="
+    width:180px;
+    border:none;
+    box-shadow:none;
+    background:none;
+  "
+/>
+</div>
+
+<div style="width:33%; text-align:center;">
+<h3>Performance</h3>
+<img 
+  src="images/performance.png"
+  style="
+    width:180px;
+    border:none;
+    box-shadow:none;
+    background:none;
+  "
+/>
+</div>
+</div>
 
 ---
 
