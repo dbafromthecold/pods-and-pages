@@ -63,9 +63,11 @@ No! We care about the <b><em>DATA</em></b>
 <img src="images/containers-qa-refresh.png" />
 </p>
 
-<font size="6">
-<a href="https://www.sqlservercentral.com/articles/streamlining-qa-with-sql-server-containers">https://www.sqlservercentral.com/articles/ding-the-world%E2%80%99s-largest-mobile-top-up-network-streamlines-qa-with-sql-server-containers</a><br>
-</font>
+<div style="text-align: left; font-size: 0.8em;">
+<a href="https://www.sqlservercentral.com/articles/ding-the-world%E2%80%99s-largest-mobile-top-up-network-streamlines-qa-with-sql-server-containers">
+Streamlining QA with SQL Server Containers
+</a>
+</div>
 
 ---
 
@@ -162,7 +164,7 @@ Use StatefulSets rather than Deployments
 
 ---
 
-### Availability
+## Availability
 <!-- .slide: style="text-align: left;"> -->
 
 <p align="center">
