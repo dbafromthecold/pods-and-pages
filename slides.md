@@ -38,7 +38,7 @@ To explore how databases can be deployed and operated in Kubernetes. We'll look 
 <!-- .slide: style="text-align: left;"> -->
 
 <div style="text-align:center;">
-    <img src="https://media.tenor.com/7zKzuI4IEfAAAAAC/but-why.gif" width="70%">
+    <img src="https://media.tenor.com/7zKzuI4IEfAAAAAC/but-why.gif">
 </div>
 
 ---
@@ -162,8 +162,12 @@ Use StatefulSets rather than Deployments
 
 ---
 
-# Availability
+### Availability
 <!-- .slide: style="text-align: left;"> -->
+
+<div style="text-align:center;">
+    <img src="https://tenor.com/view/whatever-you-need-me-to-do-im-available-whatever-i-can-do-robert-de-niro-irishman-gif-16206126">
+</div>
 
 ---
 
@@ -226,8 +230,12 @@ before Kubernetes evicts it?
 
 ---
 
-# Recoverability
+### Recoverability
 <!-- .slide: style="text-align: left;"> -->
+
+<div style="text-align:center;">
+    <img src="https://tenor.com/view/fast-recovery-speedy-quick-gif-23662662">
+</div>
 
 ---
 
@@ -284,8 +292,12 @@ That setting can be the difference between recovery and </b><em>a very quiet roo
 
 ---
 
-# Performance
+### Performance
 <!-- .slide: style="text-align: left;"> -->
+
+<div style="text-align:center;">
+    <img src="https://tenor.com/view/speed-gif-5593954">
+</div>
 
 ---
 
