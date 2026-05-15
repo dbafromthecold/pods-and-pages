@@ -86,24 +86,22 @@ Streamlining QA with SQL Server Containers
 
 ---
 
-# Getting up and running
 <!-- .slide: style="text-align: left;" -->
 
-<div style="display:flex; align-items:center; gap:40px;">
+<div style="display:flex; align-items:center; gap:20px;">
 
-<div style="width:40%; text-align:center;">
+<h1 style="margin:0;">Getting up and running</h1>
 
 <img 
   src="images/sonic-the-hedgehog.gif"
   style="
-    width:100%;
+    width:120px;
     border:none;
     box-shadow:none;
     background:none;
+    margin:0;
   "
 />
-
-</div>
 
 </div>
 
