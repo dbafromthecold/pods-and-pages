@@ -308,17 +308,27 @@ That setting can be the difference between recovery and </b><em>a very quiet roo
 ## Requests and Limits
 <!-- .slide: style="text-align: left;" -->
 
+<img 
+  src="images/limits-128.png" 
+  style="position:absolute;
+         top:20px;
+         right:20px;
+         width:220px;
+         border:none;
+         box-shadow:none;
+         background:none;">
+         
 - The noisy neighbour problem!<br>
 - Set CPU and Memory limits<br>
 - Be aware of database quirks!<br>
 
-Quality of Service based on requests and limits: -
+Quality of Service based on requests and limits:-
+
 <ul>
   <li class="fragment" data-fragment-index="1">Guaranteed</li>
   <li class="fragment" data-fragment-index="2">Burstable</li>
   <li class="fragment" data-fragment-index="3">BestEffort</li>
 </ul>
-<br>
 
 ---
 
