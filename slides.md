@@ -176,9 +176,15 @@ Use StatefulSets rather than Deployments
 <!-- .slide: style="text-align: center;" -->
 
 <div style="display:flex; justify-content:space-between; gap:30px; margin-top:40px;">
-<div style="width:33%; text-align:center;">
+
+<div 
+  class="fragment fade-in" 
+  data-fragment-index="1"
+  style="width:33%; text-align:center;"
+>
 
 <h3>Availability</h3>
+
 <img 
   src="images/availability.png"
   style="
@@ -188,10 +194,17 @@ Use StatefulSets rather than Deployments
     background:none;
   "
 />
+
 </div>
 
-<div style="width:33%; text-align:center;">
+<div 
+  class="fragment fade-in" 
+  data-fragment-index="2"
+  style="width:33%; text-align:center;"
+>
+
 <h3>Recoverability</h3>
+
 <img 
   src="images/recoverability.png"
   style="
@@ -201,10 +214,17 @@ Use StatefulSets rather than Deployments
     background:none;
   "
 />
+
 </div>
 
-<div style="width:33%; text-align:center;">
+<div 
+  class="fragment fade-in" 
+  data-fragment-index="3"
+  style="width:33%; text-align:center;"
+>
+
 <h3>Performance</h3>
+
 <img 
   src="images/performance.png"
   style="
@@ -214,7 +234,9 @@ Use StatefulSets rather than Deployments
     background:none;
   "
 />
+
 </div>
+
 </div>
 
 ---
