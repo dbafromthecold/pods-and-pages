@@ -87,7 +87,25 @@ Streamlining QA with SQL Server Containers
 ---
 
 # Getting up and running
-<!-- .slide: style="text-align: left;"> -->
+<!-- .slide: style="text-align: left;" -->
+
+<div style="display:flex; align-items:center; gap:40px;">
+
+<div style="width:40%; text-align:center;">
+
+<img 
+  src="images/sonic-the-hedgehog.gif"
+  style="
+    width:100%;
+    border:none;
+    box-shadow:none;
+    background:none;
+  "
+/>
+
+</div>
+
+</div>
 
 ---
 
@@ -350,20 +368,9 @@ Quality of Service based on requests and limits:-
 ## Tools for testing performance
 <!-- .slide: style="text-align: left;" -->
 
-<img 
-  src="images/sonic-the-hedgehog.gif"
-  style="
-    position:absolute;
-    top:20px;
-    right:20px;
-    width:180px;
-    border:none;
-    box-shadow:none;
-    background:none;
-  "
-/>
 
-<div style="width:75%;">
+
+<div style="width:100%;">
 
 - Don't only use synthetic tools for testing<br>
 - Ideally replay production workloads<br>
