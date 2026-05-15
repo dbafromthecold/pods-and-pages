@@ -95,7 +95,7 @@ Streamlining QA with SQL Server Containers
 <img 
   src="images/sonic-the-hedgehog.gif"
   style="
-    width:180px;
+    width:200px;
     border:none;
     box-shadow:none;
     background:none;
