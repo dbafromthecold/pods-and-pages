@@ -24,7 +24,6 @@
 <!-- .slide: style="text-align: left;"> -->
 
 To explore how databases can be deployed and operated in Kubernetes.<br>
-<br>
 We'll look at the core DBA responsibilities of availability, recoverability, and performance.
 
 ### Agenda
@@ -77,7 +76,7 @@ https://www.sqlservercentral.com/articles/ding-the-world%E2%80%99s-largest-mobil
 <br>
 <br>
 <span class="fragment fade-in" data-fragment-index="2">
-New process utilising containers took no more than 2 minutes
+- New process utilising containers took no more than 2 minutes
 </span>
 
 ---
@@ -90,14 +89,12 @@ New process utilising containers took no more than 2 minutes
 ## Deploying to Kubernetes
 <!-- .slide: style="text-align: left;"> -->
 
-Use StatefulSets rather than Deployments for databases
+Use StatefulSets rather than Deployments
 <br>
-<ul>
-<li class="fragment">Built for stateful applications</li>
-<li class="fragment">Stable pod identity and storage</li>
-<li class="fragment">Ordered creation and termination</li>
-<li class="fragment">Persistent storage is uniquely assigned per replica</li>
-</ul>
+- Built for stateful applications
+- Stable pod identity and storage
+- Ordered creation and termination
+- Persistent storage is uniquely assigned per replica
 
 ---
 
@@ -170,24 +167,18 @@ Use StatefulSets rather than Deployments for databases
 ## One replica?
 <!-- .slide: style="text-align: left;"> -->
 
-Deploying a single replica means relying on Kubernetes for recovery rather than database high availability
-<br>
-<br>
+Deploying a single replica means relying on Kubernetes for recovery rather than database high availability<br>
 Operators can provide database-level high availability capabilities such as:
 <ul>
 <li class="fragment">Replication</li>
 <li class="fragment">Automatic failover</li>
 <li class="fragment">Backup and recovery automation</li>
 </ul>
-
 <br>
-
+<br>
 <span class="fragment fade-in">
 However, operators also introduce additional operational complexity
 </span>
-
-<br>
-<br>
 
 - CloudNativePG
 - Oracle MySQL Operator
@@ -200,13 +191,10 @@ However, operators also introduce additional operational complexity
 
 Startup probe
 - Is SQL Server still starting?
-
 Readiness probe
 - Can we accept connections?
-
 Liveness probe
 - Should Kubernetes restart the container?
-
 - A bad liveness probe can become a self-inflicted outage!
 
 ---
@@ -240,9 +228,9 @@ before Kubernetes evicts it?
 
 Remember...Kubernetes is just another platform
 
-Still take your backups!
-Get those backups out of the cluster asap
-Regular restore testing is critical
+Still take your backups!<br>
+Get those backups out of the cluster asap<br>
+Regular restore testing is critical<br>
 
 ---
 
@@ -251,18 +239,14 @@ Regular restore testing is critical
 
 What type of snapshot are we talking about?
 <br>
-
 - Crash-consistent snapshots
 - Application-consistent snapshots
-
 <br>
-
+<br>
 <span class="fragment fade-in">
 Only application-consistent snapshots should be considered a replacement for native database backups
 </span>
-
 <br>
-
 <span class="fragment fade-in">
 How portable are those snapshots between storage platforms or clusters?
 </span>
@@ -294,9 +278,9 @@ That setting can be the difference between recovery and a very quiet room
 ## Storage
 <!-- .slide: style="text-align: left;"> -->
 
-Go for the fastest storage available to the cluster
-Follow best practices for database file layout
-Use snapshots to complement database backups
+Go for the fastest storage available to the cluster<br>
+Follow best practices for database file layout<br>
+Use snapshots to complement database backups<br>
 Test storage performance with realistic database workloads
 
 ---
@@ -304,18 +288,14 @@ Test storage performance with realistic database workloads
 ## Requests and Limits
 <!-- .slide: style="text-align: left;"> -->
 
-The noisy neighbour problem!
-Set CPU and Memory limits
-Be aware of database quirks!
-<br>
-
-Kubernetes assigns Quality of Service based on requests and limits
-<br>
-<br>
+The noisy neighbour problem!<br>
+Set CPU and Memory limits<br>
+Be aware of database quirks!<br>
+Kubernetes assigns Quality of Service based on requests and limits<br>
 <ul>
-<li class="fragment">Guaranteed</li>
-<li class="fragment">Burstable</li>
-<li class="fragment">BestEffort</li>
+<li class="fragment" data-fragment-index="1">Guaranteed</li>
+<li class="fragment" data-fragment-index="2">Burstable</li>
+<li class="fragment" data-fragment-index="3">BestEffort</li>
 </ul>
 <br>
 <span class="fragment fade-in" data-fragment-index="4">
@@ -327,10 +307,10 @@ Databases generally should <em>not</em> be BestEffort
 ## Tools for testing performance
 <!-- .slide: style="text-align: left;"> -->
 
-Don't only use synthetic tools for testing
-Ideally replay production workloads
-Or use tools that drive known benchmarks
-Utilise database engine tooling to analyse workloads
+Don't only use synthetic tools for testing<br>
+Ideally replay production workloads<br>
+Or use tools that drive known benchmarks<br>
+Utilise database engine tooling to analyse workloads<br>
 
 ---
 
