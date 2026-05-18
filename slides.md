@@ -43,22 +43,6 @@ To explore how databases can be deployed and operated in Kubernetes. We'll look 
 
 ---
 
-## A change of mindset
-<!-- .slide: style="text-align: left;"> -->
-Containers change how we think about databases...
-<br>
-<br>
-<span class="fragment fade-in" data-fragment-index="1">
-Do we care about the compute?....really?
-</span>
-<br>
-<br>
-<span class="fragment fade-in" data-fragment-index="2">
-No! We care about the <b><em>DATA</em></b>
-</span>
-
----
-
 <p align="center">
 <img src="images/containers-qa-refresh.png" />
 </p>
@@ -138,6 +122,22 @@ Use StatefulSets rather than Deployments
 
 ---
 
+## A change of mindset
+<!-- .slide: style="text-align: left;"> -->
+Containers change how we think about databases...
+<br>
+<br>
+<span class="fragment fade-in" data-fragment-index="1">
+Do we care about the compute?....really?
+</span>
+<br>
+<br>
+<span class="fragment fade-in" data-fragment-index="2">
+No! We care about the <b><em>DATA</em></b>
+</span>
+
+---
+
 ### Secrets
 <!-- .slide: style="text-align: left;"> -->
 
@@ -160,8 +160,8 @@ Use StatefulSets rather than Deployments
 <div style="display: flex; align-items: center;">
 <div style="width: 70%; padding-right: 40px; font-size: 0.9em;">
 <ul>
-<li class="fragment">Where are we connecting from?</li>
 <li class="fragment">Services provide stable network endpoints</li>
+<li class="fragment">Where are we connecting from?</li>
 <li class="fragment">Is outside access required?</li>
 </ul>
 </div>
