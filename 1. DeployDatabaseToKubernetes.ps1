@@ -116,25 +116,98 @@ Invoke-SqlCmd -ServerInstance $IP_ADDRESS -Database master -Username sa -Passwor
 
 
 
+# create database
+Invoke-SqlCmd -ServerInstance $IP_ADDRESS -Database master -Username sa -Password "Testing1122" -Query "CREATE DATABASE [testdatabase];"
+
+
+
+# confirm database
+Invoke-SqlCmd -ServerInstance $IP_ADDRESS -Database master -Username sa -Password "Testing1122" -Query "SELECT [name] FROM sys.databases;" 
+
+
+
 ########################################################################################################################################
 # snapshot demo
 
 
 
+# confirm that the snapshot CRD is available in the cluster
 kubectl api-resources | select-string snapshot
 
 
+
+# create volume snapshot class
 kubectl apply -f ./yaml/demo1/volumesnapshotclass.yaml
 
+
+
+# confirm volume snapshot class
 kubectl get volumesnapshotclass
 
 
+
+# create volume snapshot
 kubectl apply -f ./yaml/demo1/volumesnapshot.yaml
 
 
 
+# confirm volume snapshot
 kubectl get volumesnapshots
+
+
+
+# describe volume snapshot and confirm that it is ready to use
 kubectl describe volumesnapshot sqldata-snapshot
+
+
+
+# create pvc from snapshot
+kubectl apply -f ./yaml/demo1/pvc-from-snapshot.yaml
+
+
+
+# confirm pvc from snapshot
+kubectl get pvc
+
+
+
+# deploy statefulset referencing pvc created from snapshot
+kubectl apply -f ./yaml/demo1/mssql-statefulset-from-snapshot.yaml
+
+
+
+# deploy service to connect to new instance
+kubectl apply -f ./yaml/demo1/mssql-service-from-snapshot.yaml
+
+
+
+# confirm database files are there from snapshot
+kubectl exec mssql-statefulset-from-snapshot-0 -- ls -al /opt/mssql/data
+
+
+
+# grab service external IP address
+$IP_ADDRESS=$(kubectl get service mssql-service-from-snapshot -o jsonpath="{.status.loadBalancer.ingress[0].ip}"); echo $IP_ADDRESS
+
+
+
+# test connection to SQL instance
+Invoke-SqlCmd -ServerInstance $IP_ADDRESS -Database master -Username sa -Password "Testing1122" -Query "SELECT @@VERSION AS [Version];" | Format-Table
+
+
+
+# attach the database from the mdf file and force rebuild of the log (this is a final ditch effort to get the database back)
+Invoke-SqlCmd -ServerInstance $IP_ADDRESS -Database master -Username sa -Password "Testing1122" -Query "CREATE DATABASE [testdatabase] ON 
+( FILENAME = N'/opt/mssql/data/testdatabase.mdf' )
+ FOR ATTACH_FORCE_REBUILD_LOG 
+GO"
+
+
+
+# confirm database is online
+Invoke-SqlCmd -ServerInstance $IP_ADDRESS -Database master -Username sa -Password "Testing1122" -Query "SELECT [name], [state_desc] FROM sys.databases;"
+
+
 
 
 ########################################################################################################################################

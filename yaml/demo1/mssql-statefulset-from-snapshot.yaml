@@ -1,0 +1,134 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mssql-statefulset-from-snapshot
+  labels:
+    app: mssql
+
+spec:
+  serviceName: mssql-headless
+  replicas: 1
+  podManagementPolicy: Parallel
+
+  selector:
+    matchLabels:
+      name: mssql-pod-from-snapshot
+
+  template:
+    metadata:
+      labels:
+        name: mssql-pod-from-snapshot
+
+    spec:
+      tolerations:
+        - key: node.kubernetes.io/unreachable
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 10
+        - key: node.kubernetes.io/not-ready
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 10
+
+      securityContext:
+        fsGroup: 10001
+
+      containers:
+        - name: mssql-container
+          image: mcr.microsoft.com/mssql/server:2025-CU3-ubuntu-24.04
+
+          ports:
+            - containerPort: 1433
+              name: mssql-port
+
+          env:
+            - name: MSSQL_PID
+              value: "Developer"
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: MSSQL_AGENT_ENABLED
+              value: "1"
+            - name: MSSQL_DATA_DIR
+              value: /opt/mssql/data
+            - name: MSSQL_LOG_DIR
+              value: /opt/mssql/log
+            - name: MSSQL_BACKUP_DIR
+              value: /opt/mssql/backup
+            - name: MSSQL_SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mssql-sa-password
+                  key: MSSQL_SA_PASSWORD
+
+          resources:
+            requests:
+              memory: 2048Mi
+              cpu: 2000m
+            limits:
+              memory: 2048Mi
+              cpu: 2000m
+
+          livenessProbe:
+            exec:
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  /opt/mssql-tools18/bin/sqlcmd \
+                    -S localhost \
+                    -U sa \
+                    -P "$MSSQL_SA_PASSWORD" \
+                    -C \
+                    -Q "SELECT 1" \
+                    -b \
+                    -l 3
+            initialDelaySeconds: 90
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          volumeMounts:
+            - name: sqlsystem
+              mountPath: /var/opt/mssql
+            - name: sqldata
+              mountPath: /opt/mssql/data
+            - name: sqllog
+              mountPath: /opt/mssql/log
+            - name: sqlbackup
+              mountPath: /opt/mssql/backup
+
+      volumes:
+        - name: sqldata
+          persistentVolumeClaim:
+            claimName: sqldata-restore
+
+  volumeClaimTemplates:
+    - metadata:
+        name: sqlsystem
+      spec:
+        accessModes:
+          - ReadWriteOncePod
+        storageClassName: managed-csi-premium
+        resources:
+          requests:
+            storage: 20Gi
+
+    - metadata:
+        name: sqllog
+      spec:
+        accessModes:
+          - ReadWriteOncePod
+        storageClassName: managed-csi-premium
+        resources:
+          requests:
+            storage: 50Gi
+
+    - metadata:
+        name: sqlbackup
+      spec:
+        accessModes:
+          - ReadWriteOncePod
+        storageClassName: managed-csi-premium
+        resources:
+          requests:
+            storage: 100Gi

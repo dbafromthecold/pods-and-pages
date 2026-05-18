@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sqldata-restore
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteOncePod
+  storageClassName: managed-csi-premium
+  dataSource:
+    name: sqldata-snapshot
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
+  resources:
+    requests:
+      storage: 100Gi
