@@ -52,6 +52,8 @@ spec:
               value: /opt/mssql/data
             - name: MSSQL_LOG_DIR
               value: /opt/mssql/log
+            - name: MSSQL_BACKUP_DIR
+              value: /opt/mssql/backup
             - name: MSSQL_SA_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -66,6 +68,25 @@ spec:
               memory: 2048Mi
               cpu: 2000m
 
+          livenessProbe:
+            exec:
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  /opt/mssql-tools18/bin/sqlcmd \
+                    -S localhost \
+                    -U sa \
+                    -P "$MSSQL_SA_PASSWORD" \
+                    -C \
+                    -Q "SELECT 1" \
+                    -b \
+                    -l 3
+            initialDelaySeconds: 90
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3  
+
           volumeMounts:
             - name: sqlsystem
               mountPath: /var/opt/mssql
@@ -73,6 +94,8 @@ spec:
               mountPath: /opt/mssql/data
             - name: sqllog
               mountPath: /opt/mssql/log
+            - name: sqlbackup
+              mountPath: /opt/mssql/backup
 
   volumeClaimTemplates:
     - metadata:
@@ -80,7 +103,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOncePod
-        storageClassName: px-fa-direct-access
+        storageClassName: managed-csi-premium
         resources:
           requests:
             storage: 20Gi
@@ -90,7 +113,7 @@ spec:
       spec:
         accessModes:
           - ReadWriteOncePod
-        storageClassName: px-fa-direct-access
+        storageClassName: managed-csi-premium
         resources:
           requests:
             storage: 100Gi
@@ -100,7 +123,17 @@ spec:
       spec:
         accessModes:
           - ReadWriteOncePod
-        storageClassName: px-fa-direct-access
+        storageClassName: managed-csi-premium
         resources:
           requests:
             storage: 50Gi
+
+    - metadata:
+        name: sqlbackup
+      spec:
+        accessModes:
+          - ReadWriteOncePod
+        storageClassName: managed-csi-premium
+        resources:
+          requests:
+            storage: 100Gi

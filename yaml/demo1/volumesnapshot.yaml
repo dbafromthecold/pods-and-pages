@@ -1,0 +1,8 @@
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: sqldata-snapshot
+spec:
+  volumeSnapshotClassName: managed-csi-snapshot
+  source:
+    persistentVolumeClaimName: sqldata-mssql-statefulset-0

@@ -115,6 +115,67 @@ $IP_ADDRESS=$(kubectl get service mssql-service -o jsonpath="{.status.loadBalanc
 Invoke-SqlCmd -ServerInstance $IP_ADDRESS -Database master -Username sa -Password "Testing1122" -Query "SELECT @@VERSION AS [Version];" | Format-Table
 
 
+
+########################################################################################################################################
+# snapshot demo
+
+
+
+kubectl api-resources | select-string snapshot
+
+
+kubectl apply -f ./yaml/demo1/volumesnapshotclass.yaml
+
+kubectl get volumesnapshotclass
+
+
+kubectl apply -f ./yaml/demo1/volumesnapshot.yaml
+
+
+
+kubectl get volumesnapshots
+kubectl describe volumesnapshot sqldata-snapshot
+
+
+########################################################################################################################################
+# probe demo
+
+
+
+# remote into pod
+kubectl exec -it mssql-statefulset-0 -- /bin/bash
+
+
+
+# view processes 
+ps aux
+
+
+
+# kill the sql server process
+kill -STOP 12
+
+
+
+# view processes again and confirm that the sql server process is in a stopped state
+ps -eo pid,state,cmd | grep '^.* T '
+
+
+
+# exit out of the pod (if needed)
+exit
+
+
+
+# view pod events and confirm that the pod is restarted
+kubectl describe pod mssql-statefulset-0
+
+
+
+########################################################################################################################################
+
+
+
 # clean up
 kubectl delete statefulset mssql-statefulset
 kubectl delete service mssql-service
